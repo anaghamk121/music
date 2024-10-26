@@ -1,71 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music/colors.dart';
-import '../controllers/home_controller.dart';
+import '../controllers/grid_controller.dart';
 
-class HomeView extends GetView<HomeController> {
-  int _selectedIndex = 0;
-  HomeView({super.key});
+class GridPage extends StatelessWidget {
+  final GridController controller = Get.put(GridController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: const [
-          Icon(
-            Icons.settings,
-            color: secondarycolor,
-          ),
-          SizedBox(width: 10),
-          Icon(
-            Icons.tab,
-            color: secondarycolor,
-          )
-        ],
-        title: const Text(
-          'Good morning',
-          style: TextStyle(color: secondarycolor),
-        ),
-      ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(10),
         child: Obx(() {
-          if (controller.selectedIndex.value == 0) {
-            return
-              //HomeView();
-              Text('Home Page',
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold));
-
-          } else if (controller.selectedIndex.value == 1) {
-            return Text('Search Page',
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold));
-          } else {
-            return Text('Library',
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold));
-          }
+          return GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
+            itemCount: controller.items.length,
+            itemBuilder: (context, index) {
+              return Card(
+                color: secondarycolor,
+                child: Center(
+                  // child: Text(
+                  //   controller.items[index],
+                  //   style: TextStyle(color: Colors.white, fontSize: 16),
+                  // ),
+                ),
+              );
+            },
+          );
         }),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.search,
-                ),
-                label: 'Search'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.library_music,
-                ),
-                label: 'Library')
-          ],
-          currentIndex: _selectedIndex,
-          unselectedItemColor: iconcolor,
-          selectedItemColor: secondarycolor,
-          onTap: (index) {
-            controller.updateIndex(index);
-          }),
     );
   }
 }

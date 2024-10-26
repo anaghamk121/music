@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
+import '../modules/home/views/main_view.dart';
 import '../modules/library/bindings/library_bindings.dart';
 import '../modules/library/views/library_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
