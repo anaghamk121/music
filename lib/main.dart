@@ -8,7 +8,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: "Beats",
       initialRoute: AppPages.INITIAL,
-theme: ThemeData.dark(),
+      theme: ThemeData.dark(),
       getPages: AppPages.routes,
     ),
   );
