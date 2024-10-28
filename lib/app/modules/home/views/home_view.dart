@@ -20,14 +20,14 @@ class GridPage extends StatelessWidget {
             ),
             itemCount: controller.items.length,
             itemBuilder: (context, index) {
-              return Card(
+              return  Card(
                 color: secondarycolor,
                 child: Center(
-                  // child: Text(
-                  //   controller.items[index],
-                  //   style: TextStyle(color: Colors.white, fontSize: 16),
-                  // ),
-                ),
+                    child: Text(
+                      controller.items[index],
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    ),
               );
             },
           );
